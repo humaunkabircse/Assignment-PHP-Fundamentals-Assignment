@@ -2,6 +2,35 @@
 Develop a PHP script named grade_calculator.php that computes the average of three test scores and determines the corresponding letter grade. 
 Create a form where the user can input three test scores. Calculate the average and display it along with the corresponding grade (A, B, C, D, F).
 -->
+<?php
+
+    $test1 = $test2 = $test3 = $average = $grade = "";
+
+    if(isset($_POST['test1']) && isset($_POST['test2']) && isset($_POST['test3'])){
+        $test1 = $_POST['test1'];
+        $test2 = $_POST['test2'];
+        $test3 = $_POST['test3'];
+
+        $average = ($test1 + $test2 + $test3) / 3;
+
+        if($average >= 90){
+            $grade = 'A';
+        }
+        elseif($average >= 80){
+            $grade = 'B';
+        }
+        elseif($average >= 70){
+            $grade = 'C';
+        }
+        elseif($average >= 60){
+            $grade = 'D';
+        }
+        else{
+            $grade = 'F';
+        }
+    }
+    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,33 +44,7 @@ Create a form where the user can input three test scores. Calculate the average 
 <body>
     <div class="container">
         <h1>Grade Calculator</h1>
-            <?php
-                if(isset($_POST['test1']) && isset($_POST['test2']) && isset($_POST['test3'])){
-                    $test1 = $_POST['test1'];
-                    $test2 = $_POST['test2'];
-                    $test3 = $_POST['test3'];
-
-                    $average = ($test1 + $test2 + $test3) / 3;
-
-                    if($average >= 90){
-                        $grade = 'A';
-                    }
-                    elseif($average >= 80){
-                        $grade = 'B';
-                    }
-                    elseif($average >= 70){
-                        $grade = 'C';
-                    }
-                    elseif($average >= 60){
-                        $grade = 'D';
-                    }
-                    else{
-                        $grade = 'F';
-                    }
-                    echo "The average is " . $average . " and the grade is " . $grade;
-                }
-                
-            ?>
+            
     </div>
     
     <div class="container">
@@ -62,6 +65,11 @@ Create a form where the user can input three test scores. Calculate the average 
             </div>
                 
             <button type="submit" class="btn btn-primary">Grade Calculate</button>
+
+            <div class="form-group">
+                <h3><?php echo "Test_1 Score: " . $test1 . "</br> Test_2 Score: " . $test2 .  " </br> Test_3 Score: " . $test3 . " </br> The average is " . $average . " </br> Your grade is " . $grade; ?></h3>
+            </div>
+
         </form>
 
 

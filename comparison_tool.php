@@ -40,7 +40,7 @@ Develop a PHP tool named comparison_tool.php that compares two numbers and displ
             <button type="submit" class="btn btn-primary">Compare</button>
 
             <div class="form-group">
-                <h3>Result: <?php echo $result; ?></h3>
+                <h3><?php echo "Number_1: ". $num1 . " Number_2: " . $num2 . " Result: " . $result; ?></h3>
             </div>
 
 
